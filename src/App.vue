@@ -1,8 +1,6 @@
 <template>
   <Navbar />
-  <transition>
-    <router-view :key="$route.fullPath" />
-  </transition>
+  <router-view />\
 </template>
 
 <script setup>

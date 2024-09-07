@@ -12,7 +12,7 @@
 
 <script setup></script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .bg-container {
   background-color: black;
   width: 100%;
@@ -23,7 +23,6 @@
   width: 100%;
   height: 100vh;
   object-fit: cover;
-  // opacity: 0.4;
 }
 .overlay-text {
   position: absolute;

@@ -1,28 +1,42 @@
 <template>
   <div class="container-fluid p-0 bg-container">
-    <img src="/src/assets/pixel.jpeg" class="img-fluid full-img" alt="" />
-    <div class="overlay-text">
-      <h1 class="title">User List</h1>
-      <p class="description">유저 목록을 확인하고 수정하세요!</p>
-    </div>
-    <div class="userlist">
-      <UserCard />
+    <div class="content">
+      <div class="overlay-text">
+        <h1 class="title">User List</h1>
+        <p class="description">유저 목록을 확인하고 수정하세요!</p>
+      </div>
+      <div class="user-list">
+        <UserList />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import UserCard from "../components/user/UserCard.vue";
+import UserList from "../components/user/UserList.vue";
 </script>
 
 <style lang="scss" scoped>
+.bg-container {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 100vh;
+  background-image: url("/src/assets/pixel.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20vh;
+}
 .overlay-text {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   color: #fdecd8;
+  margin-bottom: 70px;
 }
 
 .title {
@@ -35,7 +49,9 @@ import UserCard from "../components/user/UserCard.vue";
   font-size: 1.2rem;
   color: #fdecd8;
 }
-.userlist {
-  position: relative;
+.user-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 </style>
