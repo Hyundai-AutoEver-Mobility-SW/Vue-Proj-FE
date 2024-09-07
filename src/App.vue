@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <div class="container bg-info">test</div>
-  </div>
+  <Navbar />
+  <transition>
+    <router-view :key="$route.fullPath" />
+  </transition>
 </template>
 
-<script setup></script>
+<script setup>
+import Navbar from "./components/Navbar.vue";
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

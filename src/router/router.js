@@ -1,13 +1,26 @@
-import { createRouter, createWebHistory } from 'vue-router'
-
-const router = createRouter[{
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import UserView from '../views/UserView.vue';
+import MyPageView from '../views/MyPageView.vue';
+const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
             path: "/",
-            name : "Home",
-         }
+            name: "home",
+            component : HomeView,
+        },
+        {
+            path: "/user",
+            name: "user",
+            component : UserView,
+        },
+        {
+            path: "/mypage",
+            name: "mypage",
+            component : MyPageView,
+        },
     ],
-}];
+});
 
 export default router;
