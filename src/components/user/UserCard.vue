@@ -6,7 +6,7 @@
       </div>
       <div class="user-details mb-3">
         <div class="like mb-3">
-          <div class="like-btn" @click="addLike">❤️ ⬅️</div>
+          <div class="like-btn" @click="addLike(i)">❤️ ⬅️</div>
           <div v-for="n in likes[i]" :key="n">❤️</div>
         </div>
         <p class="detail-custom">{{ item.userid }}</p>
@@ -14,7 +14,7 @@
         <p class="detail-custom">{{ item.addr }}</p>
       </div>
       <div class="user-actions">
-        <button class="map-btn" @click="$store.state.modalView = true">
+        <button class="brown-btn" @click="$store.state.modalView = true">
           {{ $store.state.modalView }}
           지도보기
         </button>
@@ -97,21 +97,6 @@ const addLike = (i) => {
     display: flex;
     justify-content: center;
     width: 100%;
-
-    .map-btn {
-      background-color: $brown-color;
-      width: 100%;
-      color: white;
-      border: none;
-      padding: 0 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .map-btn:hover {
-      background-color: #735b29;
-    }
   }
 }
 </style>

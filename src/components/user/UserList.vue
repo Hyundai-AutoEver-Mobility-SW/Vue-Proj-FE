@@ -24,7 +24,6 @@ const modules = [Pagination];
 
 <style lang="scss" scoped>
 .swiper {
-  //   width: 100%;
   .swiper-wrapper {
   }
   .swiper-slide {

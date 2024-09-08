@@ -11,6 +11,10 @@ export default createStore({
         { userid: 'dog5', password: 'dog5', username: "설이", addr: "옥수", image: "/profile/5.jpg" },
         ],
     },
-    mutations: {},
+    mutations: {
+        setModalView(state, payload) {
+            state.modalView = payload;
+        }
+    },
     actions: {},
 });
