@@ -22,9 +22,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/user">USER</router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link class="nav-link" to="/mypage">MYPAGE</router-link>
-          </li>
+          </li> -->
           <li class="nav-item">
             <router-link class="nav-link disabled" to="/">SIGNUP</router-link>
           </li>

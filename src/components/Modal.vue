@@ -4,13 +4,23 @@
       <div class="close" @click="closeModal">
         <img src="/src/assets/close.svg" style="width: 20px" alt="" />
       </div>
-      <h1>MAP</h1>
+      <h1 class="title">
+        💌 {{ $store.state.userData[$store.state.index].username }}네
+      </h1>
       <div class="addr">
         <div class="mb-3 mt-3">
           <input
             type="text"
             class="form-control"
             placeholder="주소를 입력하세요"
+            v-model="newAddr"
+          />
+        </div>
+        <div class="search" @click="searchAddr">
+          <img
+            src="/src/assets/search.svg"
+            style="width: 30px; cursor: pointer; transition: 0.3s"
+            alt=""
           />
         </div>
         <div class="current-btn" @click="moveCurrentLocation">현재위치</div>
@@ -19,7 +29,7 @@
       <div class="mymap">
         <MapView ref="mapComponent" />
       </div>
-      <div class="brown-btn">이사가기</div>
+      <div class="brown-btn" @click="updateAddr">이사가기</div>
     </div>
   </div>
 </template>
@@ -29,10 +39,25 @@ import MapView from "./MapView.vue";
 import { useStore } from "vuex";
 import { ref } from "vue";
 const store = useStore();
+const lastClickedLocation = ref("");
+const mapComponent = ref(null);
+// methods
 const closeModal = () => {
   store.commit("setModalView", false);
 };
-const mapComponent = ref(null);
+const newAddr = ref("");
+
+const searchAddr = () => {
+  console.log("newaddr ", newAddr.value);
+  newAddr.value = "";
+};
+const updateAddr = () => {
+  store.commit("setModalView", false);
+  lastClickedLocation.value = mapComponent.value.getLastClickedLocation();
+  console.log("마지막 마커 위치로 주소업뎃:", lastClickedLocation.value);
+  store.commit("setAddr", lastClickedLocation.value);
+};
+// map
 const moveCurrentLocation = () => {
   mapComponent.value.getCurrentLocation();
 };
@@ -73,17 +98,25 @@ const moveAddrLocation = () => {
       color: white;
       border-radius: 5px;
     }
+    .title {
+      color: $brown-color;
+      font-size: 35px;
+      font-weight: 800;
+    }
     .addr {
       display: flex;
       justify-content: flex-start;
       align-items: center;
       gap: 10px;
+      .search:hover {
+        transform: scale(1.1);
+      }
       .form-control {
-        width: 270px;
+        width: 250px;
       }
       .current-btn {
         cursor: pointer;
-        padding: 3px 10px;
+        padding: 3px 3px;
         background-color: transparent;
         border: 2px solid $brown-color;
         color: white;

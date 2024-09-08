@@ -4,7 +4,7 @@
       <div class="avata">
         <img :src="item.image" alt="" />
       </div>
-      <div class="user-details mb-3">
+      <div class="user-details mb-1">
         <div class="like mb-3">
           <div class="like-btn" @click="addLike(i)">❤️ ⬅️</div>
           <div v-for="n in likes[i]" :key="n">❤️</div>
@@ -14,9 +14,7 @@
         <p class="detail-custom">{{ item.addr }}</p>
       </div>
       <div class="user-actions">
-        <button class="brown-btn" @click="$store.state.modalView = true">
-          지도보기
-        </button>
+        <button class="brown-btn" @click="setModalView">지도보기</button>
       </div>
     </div>
   </div>
@@ -36,6 +34,11 @@ const addLike = (i) => {
   if (likes.value[i] < 5) {
     likes.value[i]++;
   }
+};
+const setModalView = () => {
+  store.commit("setModalView", true);
+  store.commit("setIndex", props.i);
+  console.log("modal index ", props.i);
 };
 </script>
 

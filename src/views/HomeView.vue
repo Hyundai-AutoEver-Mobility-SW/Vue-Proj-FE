@@ -3,7 +3,7 @@
     <img src="/src/assets/pixel.jpeg" class="img-fluid full-img" alt="" />
     <div class="overlay-text">
       <h1 class="title">Vue User List Practice</h1>
-      <p class="description">
+      <p class="description mb-5">
         Simple SPA, User CRUD implementation using Vue.js, Vue Router, and Vuex
       </p>
       <div class="brown-btn" @click="goUser">Get Started</div>
