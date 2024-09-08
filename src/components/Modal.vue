@@ -13,11 +13,13 @@
             placeholder="주소를 입력하세요"
           />
         </div>
-        <div class="mymap">
-          <MapView />
-        </div>
-        <div class="brown-btn">이사가기</div>
+        <div class="current-btn" @click="moveCurrentLocation">현재위치</div>
+        <div class="current-btn" @click="moveAddrLocation">주소위치</div>
       </div>
+      <div class="mymap">
+        <MapView ref="mapComponent" />
+      </div>
+      <div class="brown-btn">이사가기</div>
     </div>
   </div>
 </template>
@@ -25,9 +27,17 @@
 <script setup>
 import MapView from "./MapView.vue";
 import { useStore } from "vuex";
+import { ref } from "vue";
 const store = useStore();
 const closeModal = () => {
   store.commit("setModalView", false);
+};
+const mapComponent = ref(null);
+const moveCurrentLocation = () => {
+  mapComponent.value.getCurrentLocation();
+};
+const moveAddrLocation = () => {
+  mapComponent.value.setAddress();
 };
 </script>
 
@@ -64,11 +74,33 @@ const closeModal = () => {
       border-radius: 5px;
     }
     .addr {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+      .form-control {
+        width: 270px;
+      }
+      .current-btn {
+        cursor: pointer;
+        padding: 3px 10px;
+        background-color: transparent;
+        border: 2px solid $brown-color;
+        color: white;
+        border-radius: 15px;
+        color: $brown-color;
+        font-weight: 800;
+        transition: 0.3s;
+      }
+      .current-btn:hover {
+        background-color: $brown-color;
+        color: white;
+      }
     }
     .mymap {
       width: 100%;
       height: 270px;
-      background-color: #fff;
+      background-color: transparent;
       border-radius: 10px;
       margin-bottom: 20px;
       border: 2px solid $brown-color;

@@ -6,11 +6,19 @@
       <p class="description">
         Simple SPA, User CRUD implementation using Vue.js, Vue Router, and Vuex
       </p>
+      <div class="brown-btn" @click="goUser">Get Started</div>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const goUser = () => {
+  router.push("/user");
+};
+</script>
 
 <style lang="scss" scoped>
 .bg-container {
@@ -41,6 +49,10 @@
 
 .description {
   font-size: 1.2rem;
+  color: $beige-color;
+}
+.brown-btn {
+  font-size: 1.5rem;
   color: $beige-color;
 }
 </style>

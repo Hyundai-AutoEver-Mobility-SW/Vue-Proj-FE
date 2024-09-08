@@ -15,7 +15,6 @@
       </div>
       <div class="user-actions">
         <button class="brown-btn" @click="$store.state.modalView = true">
-          {{ $store.state.modalView }}
           지도보기
         </button>
       </div>
