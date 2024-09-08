@@ -30,17 +30,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #fdecd8;
+  color: $beige-color;
 }
 
 .title {
   font-size: 3rem;
   font-weight: bold;
-  color: #fdecd8;
+  color: $beige-color;
 }
 
 .description {
   font-size: 1.2rem;
-  color: #fdecd8;
+  color: $beige-color;
 }
 </style>

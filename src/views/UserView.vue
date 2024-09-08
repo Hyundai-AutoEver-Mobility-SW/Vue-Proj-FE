@@ -35,19 +35,19 @@ import UserList from "../components/user/UserList.vue";
 }
 .overlay-text {
   text-align: center;
-  color: #fdecd8;
+  color: $beige-color;
   margin-bottom: 70px;
 }
 
 .title {
   font-size: 3rem;
   font-weight: bold;
-  color: #fdecd8;
+  color: $beige-color;
 }
 
 .description {
   font-size: 1.2rem;
-  color: #fdecd8;
+  color: $beige-color;
 }
 .user-list {
   width: 100%;

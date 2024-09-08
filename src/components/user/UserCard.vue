@@ -14,7 +14,10 @@
         <p class="detail-custom">{{ item.addr }}</p>
       </div>
       <div class="user-actions">
-        <button class="map-btn">지도보기</button>
+        <button class="map-btn" @click="$store.state.modalView = true">
+          {{ $store.state.modalView }}
+          지도보기
+        </button>
       </div>
     </div>
   </div>
@@ -44,9 +47,9 @@ const addLike = (i) => {
   align-items: center;
   gap: 20px;
   .user-info {
-    border: 2px solid #4d3a10;
+    border: 2px solid $brown-color;
     border-radius: 10%;
-    background-color: #fdecd8;
+    background-color: $beige-color;
     max-width: 240px;
     gap: 20px;
     padding: 30px 20px;
@@ -78,16 +81,16 @@ const addLike = (i) => {
       display: inline-block;
       margin-right: 5px;
       padding: 0 5px;
-      background-color: #5e875f;
+      background-color: $green-color;
       border-radius: 20px;
-      color: #fdecd8;
-      border: 1px solid #4d3a10;
+      color: $beige-color;
+      border: 1px solid $brown-color;
     }
 
     .detail-custom-2 {
       font-weight: 700;
-      background-color: #fdecd8;
-      color: #4d3a10;
+      background-color: $beige-color;
+      color: $brown-color;
     }
   }
   .user-actions {
@@ -96,7 +99,7 @@ const addLike = (i) => {
     width: 100%;
 
     .map-btn {
-      background-color: #4d3a10;
+      background-color: $brown-color;
       width: 100%;
       color: white;
       border: none;

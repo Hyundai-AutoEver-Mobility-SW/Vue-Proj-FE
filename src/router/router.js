@@ -20,6 +20,7 @@ const router = createRouter({
             name: "mypage",
             component : MyPageView,
         },
+
     ],
 });
 

@@ -47,7 +47,7 @@
 .nav-link,
 .logo {
   font-weight: 400;
-  color: #fdecd8;
+  color: $beige-color;
   transition: color 0.3s ease, font-weight 0.3s ease;
 }
 .nav-link:hover,
