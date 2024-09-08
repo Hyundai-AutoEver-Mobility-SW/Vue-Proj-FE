@@ -3,6 +3,7 @@
 </template>
 
 <script setup>
+import { info } from "sass";
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
@@ -22,8 +23,12 @@ let marker = null;
 let infowindow = null;
 let geocoder = null;
 const lastClickedLocation = ref("");
-
+const searchAddrData = ref("");
 // methods
+const clearMap = () => {
+  infowindow = null;
+  marker = null;
+};
 onMounted(() => {
   if (!("geolocation" in navigator)) {
     console.error("geolocation is not available");
@@ -74,6 +79,7 @@ const getCurrentLocation = () => {
 };
 
 const clickMarker = () => {
+  clearMap();
   geocoder = new kakao.maps.services.Geocoder();
   // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
   searchAddrFromCoords(map.getCenter());
@@ -115,6 +121,7 @@ const clickMarker = () => {
   }
 };
 const setAddress = () => {
+  clearMap();
   // 주소-좌표 변환 객체를 생성합니다
   var geocoder = new kakao.maps.services.Geocoder();
 
@@ -150,6 +157,28 @@ const setAddress = () => {
       }
     );
 };
+const searchAddr = (data) => {
+  clearMap();
+  searchAddrData.value = `받은 데이터: ${data}`;
+  geocoder.addressSearch(data, function (result, status) {
+    if (status === kakao.maps.services.Status.OK) {
+      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+      // 결과값으로 받은 위치를 마커로 표시합니다
+      marker = new kakao.maps.Marker({
+        map: map,
+        position: coords,
+      });
+      // 인포윈도우로 장소에 대한 설명을 표시합니다
+      infowindow = new kakao.maps.InfoWindow({
+        content:
+          '<div style="width:150px;text-align:center;padding:6px 0;">검색위치</div>',
+      });
+      infowindow.open(map, marker);
+      // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+      map.setCenter(coords);
+    }
+  });
+};
 
 // 부모
 const getLastClickedLocation = () => {
@@ -160,6 +189,7 @@ defineExpose({
   getCurrentLocation,
   setAddress,
   getLastClickedLocation,
+  searchAddr,
 });
 </script>
 <style lang="scss" scoped></style>

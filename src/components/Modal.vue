@@ -48,8 +48,10 @@ const closeModal = () => {
 const newAddr = ref("");
 
 const searchAddr = () => {
-  console.log("newaddr ", newAddr.value);
+  // mapComponent.value.searchAddrData = newAddr.value;
+  mapComponent.value.searchAddr(newAddr.value);
   newAddr.value = "";
+  console.log("검색어: ", newAddr.value);
 };
 const updateAddr = () => {
   store.commit("setModalView", false);
