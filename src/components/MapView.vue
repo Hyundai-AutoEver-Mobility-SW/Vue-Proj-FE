@@ -39,6 +39,7 @@ onMounted(() => {
   script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoAppKey}&libraries=services&autoload=false`;
   script.onload = () => {
     // Kakao Maps API가 완전히 로드된 후에 지도 초기화
+    console.log("Kakao Maps API loaded");
     window.kakao.maps.load(() => {
       initMap();
       // getCurrentLocation();
